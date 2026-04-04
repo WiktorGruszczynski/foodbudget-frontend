@@ -7,6 +7,7 @@ export default function Product(){
         name: "",
         manufacturer: "",
         ean: "",
+        density: null,
         quantity: 0,
         quantityUnit: "ml",
         nutrientUnit: "ml",
@@ -18,7 +19,7 @@ export default function Product(){
         fiber: 0,
         protein: 0,
         salt: 0,
-        price: 0
+        price: 0,
     });
 
     const handleInputChange = (e:any) => {
@@ -31,8 +32,6 @@ export default function Product(){
         [name]: finalValue
         });
     };
-
-    const productId = 2;
 
     return (
               <section>
@@ -84,6 +83,7 @@ export default function Product(){
                 <button onClick={() => productService.addProduct(product)} style={{padding: '10px 20px', backgroundColor: 'green', color: 'white'}}>
                     DODAJ PRODUKT DO BAZY
                 </button>
+                <button onClick={() => productService.getProductById(25)}>Get Product</button>
               </section>
         
     )

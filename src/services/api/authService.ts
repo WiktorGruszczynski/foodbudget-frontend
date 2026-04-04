@@ -14,8 +14,8 @@ export const authService = {
         console.log('Register status:', response.status);
     },
 
-    verify_register: async (code:string) => {
-        const response = await fetch(`${API_URL}/auth/register-verify?code=${code}`, {
+    verify_register: async (code:string, email:string) => {
+        const response = await fetch(`${API_URL}/auth/register-verify?code=${code}&email=${email}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -33,5 +33,15 @@ export const authService = {
         });
 
         console.log('Login response:', response.status);
+    },
+
+    issue_password_reset: async (email: string) => {
+        const response = await fetch(`${API_URL}/auth/send-password-reset-code?email=${email}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+        })
+
+        console.log('issue_password_reset status: ', response.status)
     }
 }

@@ -52,11 +52,11 @@ export function Recipe(){
     return (
         <div>
             <h1>Recipes</h1>
-            {/* <button onClick={() => recipeService.addRecipe(recipe)}>Add recipe</button> */}
+            <button onClick={() => recipeService.addRecipe(recipe)}>Add recipe</button>
             <p> </p>
             <button onClick={() => recipeService.getRecipe(1)}>Get recipe</button>
             <p></p>
-            <button onClick={() => recipeService.updateRecipe(1, recipe)}>Update recipe</button>
+            <button onClick={() => recipeService.updateRecipe(5, recipe)}>Update recipe</button>
         </div>
     )
 }

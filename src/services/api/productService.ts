@@ -1,7 +1,8 @@
+import type { ProductRequest, ProductResponse } from "../../types/product";
 import {API_URL} from "./config/apiConfig"
 
 export const productService = {
-    getProductById: async (id:number) => {
+    getProductById: async (id: number) => {
         const response = await fetch(`${API_URL}/product/${id}`, {
             method: 'GET',
             headers: { 'Content-Type': 'application/json' },
@@ -14,7 +15,7 @@ export const productService = {
             console.log(data)
         }
     },
-    addProduct: async (productRequest: any) => {
+    addProduct: async (productRequest: ProductRequest) => {
         const res = await fetch(`${API_URL}/product`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -25,7 +26,7 @@ export const productService = {
         console.log(res.status)
     },
 
-    updateProduct: async (id: number, productRequest: any) => {
+    updateProduct: async (id: number, productRequest: ProductRequest) => {
 
         const res = await fetch(`${API_URL}/product/${id}`, {
             method: 'PATCH',
