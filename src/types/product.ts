@@ -6,7 +6,6 @@ export interface ProductResponse {
   quantity: number;
   quantityUnit: string;
   nutrientUnit: string;
-  density: number | null;
   energyKcal: number;
   fat: number;
   saturatedFat: number;
@@ -22,12 +21,11 @@ export interface ProductResponse {
 
 export interface ProductRequest {
   name: string;
-  ean: string | null;
-  manufacturer: string | null;
+  ean: string;
+  manufacturer: string;
   quantity: number;
   quantityUnit: string;
   nutrientUnit: string;
-  density: number | null;
   energyKcal: number;
   fat: number;
   saturatedFat: number;

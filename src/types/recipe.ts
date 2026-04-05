@@ -1,6 +1,6 @@
 import type { ProductResponse } from "./product";
 
-interface Ingredient {
+interface IngredientResponse {
     id: number;
     product: ProductResponse
     quantity: number;
@@ -8,10 +8,26 @@ interface Ingredient {
     price: number;
 }
 
-export interface RecipeResponse{
+interface IngredientRequest {
+    id: number;
+    productId: number;
+    quantity: number;
+    unit: string;
+}
+
+
+export interface RecipeResponse {
     id: number;
     name: string;
     description: string;
-    ingredients: Ingredient[]
+    ingredients: IngredientResponse[]
 }
+
+export interface RecipeRequest {
+    id: number;
+    name: string;
+    description: string;
+    ingredients: IngredientRequest[]
+}
+
 
