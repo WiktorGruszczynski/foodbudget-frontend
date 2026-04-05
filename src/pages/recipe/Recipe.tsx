@@ -22,7 +22,7 @@ export default function RecipePage() {
         <div className="recipe-cotainer">
             <ul className="recipe-options">
                 {options.map(option => (
-                    <li className={selectedOption===option?'active':''} onClick={() => setSelectedOption(option)}>
+                    <li className={selectedOption===option?'active':''} onClick={() => setSelectedOption(option)} key={option}>
                         {option}
                     </li>
                 ))}

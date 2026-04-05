@@ -21,7 +21,7 @@ export default function RecipeSearch() {
 
     return (
         <div className="recipe-search">
-            <div className="search-wrapper">
+            <div className="font-bold">
                 <input type="text" value={query} onChange={e => handleInputUpdate(e.target.value)}/>
             </div>
             <ul className="recipe-list">
@@ -31,6 +31,9 @@ export default function RecipeSearch() {
                     ))
                 }
             </ul>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {/* Twoje produkty */}
+            </div>
         </div>
     )
 }
