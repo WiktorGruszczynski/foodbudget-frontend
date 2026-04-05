@@ -1,27 +1,66 @@
 import { useState } from "react";
-import { authService } from "../services/api/authService";
+import LoginForm from "../components/auth/LoginForm";
+import RegisterForm from "../components/auth/RegisterForm";
+import VerifyForm from "../components/auth/VerifyForm";
+import ForgotPasswordForm from "../components/auth/ForgotPasswordForm";
+import NewPasswordForm from "../components/auth/NewPassword";
 
-export default function Auth(){
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [code, setCode] = useState("");
+export type AuthView = 'LOGIN' | 'REGISTER' | 'VERIFY' | 'FORGOT_PASSWORD' |  'NEW_PASSWORD';
+export type VerificationCodeType = 'PASSWORD_RESET' | 'EMAIL_VERIFICATION';
+
+export default function Auth() {
+    const [view, setView] = useState<AuthView>('LOGIN');
     
+    const [code, setCode] = useState("");
+    const [email, setEmail] = useState("");
+    const [codeType, setCodeType] = useState<VerificationCodeType>('PASSWORD_RESET')
+
     return (
-    <section>
-        <h3>Logowanie</h3>
-        <input type="text" placeholder="Email" onChange={e => setEmail(e.target.value)} value={email}/>
-        <input type="text" placeholder="Hasło" onChange={e => setPassword(e.target.value)} value={password}/>
-        <button onClick={() => authService.register(email, password)}>Register</button>
-        <button onClick={() => authService.login(email, password)}>Login</button>
+        <div className="auth-container">
+            {view === 'LOGIN' && (
+                <LoginForm 
+                    email={email} 
+                    setEmail={setEmail} 
+                    onChangeView={setView} 
+                />
+            )}
 
-        <label htmlFor="">Register code</label>
-        <input type='text' onChange={e => setCode(e.target.value)} value={code}></input>
-        <button onClick={() => authService.verify_register(code, email)}>Verify register</button>
+            {view === 'REGISTER' && (
+                <RegisterForm 
+                    email={email} 
+                    setCodeType={setCodeType}
+                    setEmail={setEmail} 
+                    onChangeView={setView} 
+                />
+            )}
 
-        <h3>Password reset</h3>
-        <button onClick={() => authService.issue_password_reset(email)}>Send reset email</button>
-        <label htmlFor="Password reset code"></label>
-        <input type="text" value={code} onChange={e => setCode(e.target.value)}/>
-      </section>
-    )
+            {view === 'FORGOT_PASSWORD' && (
+              <ForgotPasswordForm
+                email={email}
+                setEmail={setEmail}
+                setCodeType={setCodeType}
+                onChangeView={setView}
+              />
+            )}
+
+            {view === 'NEW_PASSWORD' && (
+                <NewPasswordForm
+                code={code}
+                email={email}
+                onChangeView={setView}
+                />
+            )}
+
+            {view === 'VERIFY' && (
+                <VerifyForm 
+                    code={code}
+                    setCode={setCode}
+                    email={email} 
+                    onChangeView={setView} 
+                    type={codeType}
+                />
+            )}
+
+        </div>
+    );
 }
