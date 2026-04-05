@@ -40,7 +40,9 @@ function App() {
   return (
     <div className="app">
       <BrowserRouter>
-        <nav>Navigation</nav>
+        <nav className="sticky top-0 z-50 w-full bg-white border-b shadow-sm p-4">
+          Navigation
+        </nav>
         <main>
           <Routes>           
             {/* TRASY PUBLICZNE */} 
