@@ -37,11 +37,61 @@ function App() {
     return <div className="loading-screen">Loading application...</div>; 
   }
 
+  const navLinks = [
+    { label: "Meals", href: "/meal" },
+    { label: "Recipes", href: "/recipe" }, // Dodałem "/" dla spójności
+    { label: "Metrics", href: "/metrics" },
+    { label: "More", href: "/more" },
+  ];
+
   return (
     <div className="app">
       <BrowserRouter>
-        <nav className="sticky top-0 z-50 w-full bg-white border-b shadow-sm p-4">
-          Navigation
+        <nav className="fixed bottom-0 z-50 w-full bg-white md:sticky md:top-0 md:bottom-auto">
+          <div className="h-9 flex items-center justify-center md:justify-between px-10">
+            <div className="hidden md:block font-bold text-gray-800 cursor-pointer">
+              <a href="/">Logo</a>
+            </div>
+            <ul className="flex h-full">
+              {
+                navLinks.map(
+                  (option, index) => (
+                    <li key={index} className="h-full">
+                        <a
+                          href={option.href}
+                          className="
+                            relative flex items-center h-full px-8 font-medium text-gray-600 font-semibold
+                            hover:text-blue-600 transition-colors duration-200
+                            
+                            /* 1. Tworzymy niewidzialną linię na dole */
+                            after:content-[''] 
+                            after:absolute 
+                            after:bottom-0 
+                            after:left-0 
+                            after:h-[2px] 
+                            after:w-full 
+                            after:bg-blue-500 
+                            
+                            /* 2. Startowa skala linii to 0 (niewidoczna) */
+                            after:scale-x-0 
+                            /* 3. Punkt zakotwiczenia animacji po lewej stronie */
+                            after:origin-left 
+                            /* 4. Dodajemy transition dla transformacji */
+                            after:transition-transform 
+                            after:duration-200
+                            
+                            /* 5. Na hover skala wraca do 1 (pełna szerokość) */
+                            hover:after:scale-x-100
+                          "
+                        >
+                          {option.label}
+                        </a>
+                      </li>
+                  )
+                )
+              }
+            </ul>
+          </div>
         </nav>
         <main>
           <Routes>           
