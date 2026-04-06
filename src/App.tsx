@@ -48,7 +48,7 @@ function App() {
     <div className="app">
       <BrowserRouter>
         <nav className="fixed bottom-0 z-50 w-full bg-white md:sticky md:top-0 md:bottom-auto">
-          <div className="h-9 flex items-center justify-center md:justify-between px-10">
+          <div className="h-9.5 flex items-center justify-center md:justify-between px-10">
             <div className="hidden md:block font-bold text-gray-800 cursor-pointer">
               <a href="/">Logo</a>
             </div>
