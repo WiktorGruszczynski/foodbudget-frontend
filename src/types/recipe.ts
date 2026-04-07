@@ -1,7 +1,7 @@
-import type { ProductResponse } from "./product";
+import type {  Product, ProductResponse } from "./product";
 
 interface IngredientResponse {
-    id: number;
+    id: string;
     product: ProductResponse
     quantity: number;
     unit: string;
@@ -9,25 +9,32 @@ interface IngredientResponse {
 }
 
 interface IngredientRequest {
-    id: number;
-    productId: number;
+    productId: string;
     quantity: number;
     unit: string;
 }
 
+interface Ingredient {
+    product: Product,
+    quantity: number,
+    unit: string,
+}
 
 export interface RecipeResponse {
-    id: number;
+    id: string;
     name: string;
     description: string;
     ingredients: IngredientResponse[]
 }
 
 export interface RecipeRequest {
-    id: number;
     name: string;
     description: string;
     ingredients: IngredientRequest[]
 }
 
-
+export interface Recipe {
+    name: string;
+    description: string;
+    ingredients: Ingredient[]
+}

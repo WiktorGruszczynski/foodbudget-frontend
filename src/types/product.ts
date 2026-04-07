@@ -1,5 +1,5 @@
 export interface ProductResponse {
-  id: number;
+  id: string;
   name: string;
   ean: string | null;
   manufacturer: string | null;
@@ -35,4 +35,23 @@ export interface ProductRequest {
   protein: number;
   salt: number;
   price: number;
+}
+
+export interface Product {
+    id: string;
+    name: string;
+    ean: string;
+    manufacturer: string;
+    quantity: number;
+    quantityUnit: string;
+    nutrientUnit: string;
+    energyKcal: number;
+    fat: number;
+    saturatedFat: number;
+    carbohydrates: number;
+    sugars: number;
+    fiber: number;
+    protein: number;
+    salt: number;
+    price: number;
 }

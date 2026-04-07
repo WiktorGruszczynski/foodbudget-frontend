@@ -3,7 +3,6 @@ import RecipeSearch from "../../components/recipe/RecipeSearch";
 import Favourites from "../../components/recipe/Favourites";
 import OwnRecipes from "../../components/recipe/OwnRecipes";
 import RecipeForm from "../../components/recipe/RecipeForm";
-import "./Recipe.css"
 
 
 const options = ["Search", "Favourites", "Own", "Add Recipe"];
@@ -19,7 +18,7 @@ export default function RecipePage() {
     const [selectedOption, setSelectedOption] = useState(options[0])
 
     return (
-        <div className="recipe-container flex flex-col h-full md:flex-row md:gap-8 md:h-[calc(100vh-38px)]">
+        <div className="recipe-container flex flex-col h-[calc(100vh-38px)] md:flex-row  ">
             <ul className="
                     /* MOBILKA: Wyskakuje nad navbar na dole */
                     fixed bottom-9.5 left-0 w-full z-40
@@ -34,7 +33,7 @@ export default function RecipePage() {
                     </li>
                 ))}
             </ul>
-            <div className="action-area">
+            <div className="action-area min-h-full flex-1 overflow-y-auto flex-col bg-blue-300 p-4 pb-20 md:p-8 md:pb-8">
                 {optionsDict[selectedOption]}
             </div>
         </div>

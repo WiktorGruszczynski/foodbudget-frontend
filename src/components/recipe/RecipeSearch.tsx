@@ -10,30 +10,30 @@ export default function RecipeSearch() {
     const handleInputUpdate = async (value: string) => {
         setQuery(value)
 
-        if (query.length >= 3) {
-            const response = await productService.getProducts(query, withRecipe)
+        if (value.length >= 3) {
+            const response = await productService.getProducts(value, withRecipe)
 
-            if (response.status === 200){
-                setProducts(response.data)
-            }
+            setProducts(response.data)
+            
+            console.log(response)
+        }
+        else{
+            setProducts([])
         }
     }
 
     return (
-        <div className="recipe-search">
-            <div className="font-bold">
+        <div className="recipe-search h-full flex flex-col bg-blue-300">
+            <div className="font-medium bg-white">
                 <input type="text" value={query} onChange={e => handleInputUpdate(e.target.value)}/>
             </div>
             <ul className="recipe-list">
                 {
                     products.map(product => (
-                        <li>{product.name}</li>
+                        <li key={product.id}>{product.name}</li>
                     ))
                 }
             </ul>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                {/* Twoje produkty */}
-            </div>
         </div>
     )
 }
