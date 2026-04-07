@@ -112,7 +112,6 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
-        <footer>Footer</footer>
       </BrowserRouter>
     </div>
   )
