@@ -33,7 +33,7 @@ export default function RecipePage() {
                     </li>
                 ))}
             </ul>
-            <div className="action-area min-h-full flex-1 overflow-y-auto flex-col bg-blue-300 p-4 pb-20 md:p-8 md:pb-8">
+            <div className="action-area min-h-full flex-1 overflow-y-auto flex-col bg-blue-200 p-4 pb-20 md:p-8 md:pb-8">
                 {optionsDict[selectedOption]}
             </div>
         </div>

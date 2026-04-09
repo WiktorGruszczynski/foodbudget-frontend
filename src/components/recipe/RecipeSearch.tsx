@@ -25,7 +25,7 @@ export default function RecipeSearch() {
     return (
         <div className="recipe-search h-full flex flex-col bg-blue-300">
             <div className="font-medium bg-white">
-                <input type="text" value={query} onChange={e => handleInputUpdate(e.target.value)}/>
+                <input type="text" className="w-full border-2" value={query} onChange={e => handleInputUpdate(e.target.value)}/>
             </div>
             <ul className="recipe-list">
                 {

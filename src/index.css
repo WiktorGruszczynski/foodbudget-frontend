@@ -1,8 +1,14 @@
 @import "tailwindcss";
 
+@theme {
+  --color-energy: #fd63ff;
+  --color-protein: #63c6ff;
+  --color-fat: #fff763;
+  --color-carb: #ce63ff;
+}
 
 :root {
-  --text: #6b6375;
+  --text: #5e4f70;
   --text-h: #08060d;
   --bg: #fff;
   --border: #e5e4e7;
@@ -37,7 +43,7 @@
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
-    --bg: #16171d;
+    --bg: #7c8ada;
     --border: #2e303a;
     --code-bg: #1f2028;
     --accent: #c084fc;
@@ -119,8 +125,4 @@ ul{
 
 button{
   cursor: pointer;
-  background-color: white;
-}
-button:hover{
-  background-color: red;
 }

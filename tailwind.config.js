@@ -3,7 +3,6 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Główny kolor Twojej marki (niebieski)
         brand: {
           light: '#e0f2fe',   // Bardzo jasny niebieski (np. tła sekcji, hover dla delikatnych elementów)
           DEFAULT: '#0ea5e9', // Twój główny niebieski (przyciski, linki, ikony)

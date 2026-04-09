@@ -24,5 +24,9 @@ export const productService = {
 
     getUserProducts: async () => {
         return await requests.get<ProductResponse[]>(`/product/me`)
+    },
+
+    getUserRecipeProducts: async () => {
+        return await requests.get<ProductResponse[]>(`/product/me?hasRecipe=true`)
     }
 }
