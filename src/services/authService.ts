@@ -25,7 +25,7 @@ export const authService = {
     },
 
     isAuthCookiePresent: () => {
-        return document.cookie.split(';').some(c => c.trim().startsWith('is_auth='));
+        return document.cookie.split(';').some(c => c.trim().startsWith('AUTHENTICATED='));
     },
 
     isSessionValid: async () => {
@@ -46,5 +46,9 @@ export const authService = {
             code: code,
             type: type
         })
+    },
+
+    logout: async () => {
+        return await requests.post<AuthResponse>(`/auth/logout`)
     }
 }

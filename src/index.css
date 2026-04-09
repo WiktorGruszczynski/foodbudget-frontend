@@ -116,3 +116,11 @@ li.active{
 ul{
   list-style: none;
 }
+
+button{
+  cursor: pointer;
+  background-color: white;
+}
+button:hover{
+  background-color: red;
+}

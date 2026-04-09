@@ -5,6 +5,7 @@ import { authService } from './services/authService';
 import MealPlanPage from './pages/MealPlan';
 import Home from './pages/Home';
 import RecipePage from './pages/recipe/Recipe';
+import More from './pages/More';
 
 
 function App() {
@@ -13,41 +14,58 @@ function App() {
     "Meals": <MealPlanPage />,
     "Recipes": <RecipePage />,
     "Metrics": <Home />,
-    "More": <Home />
+    "More": <More/>
   };
 
   const [isLoading, setIsLoading] = useState(true);
-  const [page, setPage] = useState(pages.Auth);
-  const [activeTab, setActiveTab] = useState("Auth");
+  const [page, setPage] = useState<null | JSX.Element>(null);
+  const [activeTab, setActiveTab] = useState("");
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   useEffect(() => {
-    const verifySession = async () => {
+    const isSessionValid = async () => {
       try {
         const response = await authService.isSessionValid();
-        const isValid = response.status === 200;
-        
-        if (isValid){
-          setPage(pages.Meals)
-        }
+        return response.status === 200;
 
       } catch (error) {
-        console.error(error)
+        return false;
       }
     };
 
-    if (!authService.isAuthCookiePresent()) {
-      verifySession();
+    const main = async () => {
+      if (authService.isAuthCookiePresent() && await isSessionValid()){
+        setPage(pages.Meals)
+        setIsAuthenticated(true)
+      }
+      else{
+        setPage(pages.Auth)
+      }
+
+      setIsLoading(false)
     }
 
-    setIsLoading(false);
+    main()
     
   }, []);
+
+
 
   const handleOptionChange = (label: string) => {
     setPage(pages[label])
     setActiveTab(label)
   }
 
+  const getNavElementsArray = () => {
+    if (!isAuthenticated){
+      return []
+    }
+
+    return Object.keys(pages)
+    .filter(
+      key => key !== "Auth"
+    )
+  }
 
   if (isLoading) {
     return <div className="loading-screen">Loading application...</div>; 
@@ -62,7 +80,7 @@ function App() {
             </div>
             <ul className="flex h-full w-full md:w-auto">
               {
-                Object.keys(pages).filter(key => key !== "Auth").map(
+                getNavElementsArray().map(
                   (entry) => {
                     // Sprawdzamy, czy ten element jest obecnie aktywny
                     const isActive = activeTab === entry;
