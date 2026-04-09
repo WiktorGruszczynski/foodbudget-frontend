@@ -1,5 +1,5 @@
 import type { RecipeResponse } from "../types/recipe";
-import { requests } from "./api/requests";
+import { requests } from "../api/requests";
 
 
 export const recipeService = {

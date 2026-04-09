@@ -1,5 +1,5 @@
 import type { ProductRequest, ProductResponse} from "../types/product";
-import { requests } from "./api/requests";
+import { requests } from "../api/requests";
 
 export const productService = {
     getProductById: async (id: number) => {

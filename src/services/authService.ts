@@ -1,6 +1,5 @@
 import type { AuthResponse } from "../types/auth";
-import { requests } from "./api/requests";
-
+import { requests } from "../api/requests";
 
 export const authService = {
     register: async (email:string, password:string) => {
@@ -23,6 +22,10 @@ export const authService = {
 
     issuePasswordReset: async (email: string) => {
         return await requests.post<AuthResponse>(`/auth/send-password-reset-code?email=${email}`)
+    },
+
+    isAuthCookiePresent: () => {
+        return document.cookie.split(';').some(c => c.trim().startsWith('is_auth='));
     },
 
     isSessionValid: async () => {

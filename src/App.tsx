@@ -32,19 +32,22 @@ function App() {
 
       } catch (error) {
         console.error(error)
-
-      } finally {
-        setIsLoading(false);
       }
     };
 
-    verifySession();
+    if (!authService.isAuthCookiePresent()) {
+      verifySession();
+    }
+
+    setIsLoading(false);
+    
   }, []);
 
   const handleOptionChange = (label: string) => {
     setPage(pages[label])
     setActiveTab(label)
   }
+
 
   if (isLoading) {
     return <div className="loading-screen">Loading application...</div>; 
