@@ -28,5 +28,26 @@ export const productService = {
 
     getUserRecipeProducts: async () => {
         return await requests.get<ProductResponse[]>(`/product/me?hasRecipe=true`)
+    },
+
+    generateEmptyProductRequest: (): ProductRequest => {
+        return {
+            name: "",
+            manufacturer: "",
+            ean: "",
+            quantity: 0,
+            quantityUnit: "g",
+            nutrientUnit: "g",
+            energyKcal: 0,
+            fat: 0,
+            saturatedFat: 0,
+            carbohydrates: 0,
+            sugars: 0,
+            fiber: 0,
+            protein: 0,
+            salt: 0,
+            price: 0,
+        }
     }
+
 }

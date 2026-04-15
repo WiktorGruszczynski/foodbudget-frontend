@@ -39,11 +39,11 @@
   } */
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
     --text-h: #f3f4f6;
-    --bg: #7c8ada;
+    --bg: #222222;
     --border: #2e303a;
     --code-bg: #1f2028;
     --accent: #c084fc;
@@ -57,21 +57,24 @@
   #social .button-icon {
     filter: invert(1) brightness(2);
   }
-}
+} */
 
 #root {
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
-  border-inline: 1px solid var(--border);
   min-height: 100svh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
 }
 
-body {
+html, body {
   margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+  overscroll-behavior-y: none;
 }
 
 h1,

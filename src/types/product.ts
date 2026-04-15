@@ -1,11 +1,13 @@
+export type MeasurementUnit = 'g' | 'ml';
+
 export interface ProductResponse {
   id: string;
   name: string;
   ean: string | null;
   manufacturer: string | null;
   quantity: number;
-  quantityUnit: string;
-  nutrientUnit: string;
+  quantityUnit: MeasurementUnit;
+  nutrientUnit: MeasurementUnit;
   energyKcal: number;
   fat: number;
   saturatedFat: number;
@@ -24,8 +26,8 @@ export interface ProductRequest {
   ean: string;
   manufacturer: string;
   quantity: number;
-  quantityUnit: string;
-  nutrientUnit: string;
+  quantityUnit: MeasurementUnit;
+  nutrientUnit: MeasurementUnit;
   energyKcal: number;
   fat: number;
   saturatedFat: number;
@@ -43,8 +45,8 @@ export interface Product {
     ean: string;
     manufacturer: string;
     quantity: number;
-    quantityUnit: string;
-    nutrientUnit: string;
+    quantityUnit: MeasurementUnit;
+    nutrientUnit: MeasurementUnit;
     energyKcal: number;
     fat: number;
     saturatedFat: number;
