@@ -1,5 +1,5 @@
 import './styles/index.css'
-import { useEffect, useState, type JSX } from 'react';
+import { useEffect, useState} from 'react';
 import { authService } from './services/authService';
 import Cookies from "js-cookie"
 import AuthPage from './pages/AuthPage';
